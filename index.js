@@ -1,11 +1,12 @@
-console.log("hey everyone, server wip...")
-//import the server package
+
+// console.log("hey everyone, server wip...")
+// import the server package
 const express = require('express');
 
 // make an instance of the server that we can customise and run
 const app = express();
 
-
+const HOST = process.env.PORT || "localhost";
 const PORT = process.env.PORT || 3000;
 //ports run in integers  between 1001 - 65536
 
@@ -15,6 +16,9 @@ const PORT = process.env.PORT || 3000;
 app.get('/', (request, response) => {
     response.send("hellow world, server building in progress...")
 })
+
+const pokemonRouter = require('./controllers/PokemonController');
+app.use("/pokemon", pokemonRouter);
 
 // Configure the server
 
